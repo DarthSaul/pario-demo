@@ -19,14 +19,6 @@ function selectPatient(id) {
 
 <template>
   <q-page padding>
-    <div>
-      <img
-        alt="Pario logo"
-        src="https://s4-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/929/300/resized/Pario_Logo_BlueBackground.png?1675881687"
-        style="width: 75px; height: 75px"
-      />
-    </div>
-
     <div v-if="patientStore.loading">Loading...</div>
     <div v-else class="q-mb-xl">
       <div class="row items-stretch q-col-gutter-lg">

@@ -1,27 +1,7 @@
 <script setup>
-import EssentialLink from "components/EssentialLink.vue";
+import MainDrawer from "src/components/app/MainDrawer.vue";
+import MainHeader from "src/components/app/MainHeader.vue";
 import { ref } from "vue";
-
-const essentialLinks = [
-  {
-    title: "Docs",
-    caption: "quasar.dev",
-    icon: "school",
-    link: "https://quasar.dev",
-  },
-  {
-    title: "Github",
-    caption: "github.com/quasarframework",
-    icon: "code",
-    link: "https://github.com/quasarframework",
-  },
-  {
-    title: "Discord Chat Channel",
-    caption: "chat.quasar.dev",
-    icon: "chat",
-    link: "https://chat.quasar.dev",
-  },
-];
 
 const leftDrawerOpen = ref(false);
 function toggleLeftDrawer() {
@@ -30,31 +10,14 @@ function toggleLeftDrawer() {
 </script>
 
 <template>
-  <q-layout view="lHh lpR lFf">
-    <q-header class="bg-primary text-white">
-      <q-toolbar>
-        <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
-
-        <q-toolbar-title>
-          <q-avatar icon="medical_information" />
-          Pario Demo
-        </q-toolbar-title>
-      </q-toolbar>
-    </q-header>
+  <q-layout view="Lhh lpR lFf">
+    <MainHeader />
 
     <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
-      <q-list>
-        <q-item-label header> Essential Links </q-item-label>
-
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
+      <MainDrawer />
     </q-drawer>
 
-    <q-page-container>
+    <q-page-container class="bg-grey-2">
       <router-view />
     </q-page-container>
   </q-layout>
