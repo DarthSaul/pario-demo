@@ -1,49 +1,43 @@
 <script setup>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 import { usePatientStore } from "src/stores/patients-store";
 import PatientItem from "src/components/PatientItem.vue";
-import PatientRecord from "src/components/PatientRecord.vue";
+import LoadingItem from "src/components/app/LoadingItem.vue";
 
 const patientStore = usePatientStore();
+const router = useRouter();
 
 if (!patientStore.patients) {
   patientStore.indexPatients();
 }
 
-const patientSelected = ref(false);
-
 function selectPatient(id) {
-  patientSelected.value = id;
+  router.push(`/home/${id}`);
 }
 </script>
 
 <template>
-  <q-page padding>
-    <div>
-      <img
-        alt="Pario logo"
-        src="https://s4-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/929/300/resized/Pario_Logo_BlueBackground.png?1675881687"
-        style="width: 75px; height: 75px"
-      />
-    </div>
-
-    <div v-if="patientStore.loading">Loading...</div>
-    <div v-else class="q-mb-xl">
+  <q-page class="q-pa-lg">
+    <div v-if="patientStore.loading">
       <div class="row items-stretch q-col-gutter-lg">
+        <div v-for="n in 3" :key="n" class="col-12">
+          <div class="q-pa-lg bg-white shadow-5 border-radius10">
+            <LoadingItem />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div v-else class="q-mb-xl">
+      <div class="row q-col-gutter-lg">
         <div
           v-for="patient in patientStore.patients"
           :key="patient.id"
-          class="col-3 full-height"
+          class="col-12"
         >
           <PatientItem v-bind="patient" @click="selectPatient(patient.id)" />
         </div>
       </div>
-    </div>
-
-    <hr />
-
-    <div v-if="patientSelected">
-      <PatientRecord :id="patientSelected" />
     </div>
   </q-page>
 </template>

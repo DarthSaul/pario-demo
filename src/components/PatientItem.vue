@@ -1,5 +1,7 @@
 <script setup>
 import { computed } from "vue";
+import { useQuasar } from "quasar";
+const $q = useQuasar();
 const props = defineProps({
   id: {
     type: String,
@@ -20,21 +22,68 @@ const lastName = computed(() => {
 const firstName = computed(() => {
   return props.name[0].given[0];
 });
+function handleClick(msg) {
+  $q.notify({
+    message: `Ok, proceeding with ${msg}!`,
+    position: "top",
+    color: "brand-1",
+  });
+}
 </script>
 
 <template>
-  <div class="q-pa-lg shadow-5 rounded-borders person-record cursor-pointer">
-    <div class="text-center">Person Img Placeholder</div>
-    <div class="row">
-      <div class="col-12">{{ lastName }}, {{ firstName }}</div>
-      <div class="col-12">DOB: {{ props.birthDate }}</div>
-      <div class="col-12">Patient ID: {{ props.id }}</div>
+  <div class="q-pa-lg bg-white shadow-5 border-radius10 cursor-pointer">
+    <div class="row items-center q-gutter-x-lg q-gutter-y-md">
+      <div class="col-auto">
+        <q-avatar
+          size="70px"
+          font-size="42px"
+          color="brand-1"
+          text-color="white"
+          icon="face"
+        />
+      </div>
+      <div class="col-3">
+        <div class="text-caption text-grey-7">Name</div>
+        <div class="text-h5 text-bold">{{ lastName }}, {{ firstName }}</div>
+      </div>
+      <div class="col-xs-12 col-sm-2">
+        <div class="text-caption text-grey-7">Patient ID</div>
+        <div class="text-h5 text-bold">{{ props.id }}</div>
+      </div>
+      <div class="col-xs-12 col-sm">
+        <div class="text-caption text-grey-7">DOB</div>
+        <div class="text-h5 text-bold">{{ props.birthDate }}</div>
+      </div>
+
+      <q-separator vertical inset />
+
+      <div class="col-xs-12 col-sm-auto">
+        <div class="q-mb-xs">
+          <q-btn
+            icon="monitor_heart"
+            label="ACTION 1"
+            color="brand-1"
+            class="rounded-borders"
+            size="sm"
+            @click.stop.prevent="handleClick('Action 1')"
+          />
+        </div>
+        <div>
+          <q-btn
+            icon="spa"
+            label="ACTION 2"
+            color="brand-1"
+            class="rounded-borders"
+            size="sm"
+            @click.stop.prevent="handleClick('Action 2')"
+          />
+        </div>
+      </div>
     </div>
+
+    <div class="row"></div>
   </div>
 </template>
 
-<style lang="scss" scoped>
-.person-record {
-  max-width: 300px;
-}
-</style>
+<style lang="scss" scoped></style>
