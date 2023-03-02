@@ -20,4 +20,4 @@ jobs:
           NETLIFY_DEPLOY_TO_PROD: true
           build_directory: "dist/spa"
           install_command: npm install
-          build_command: quasar build
+          build_command: npm run build
