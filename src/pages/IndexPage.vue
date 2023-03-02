@@ -25,7 +25,7 @@ function selectPatient(id) {
         <div
           v-for="patient in patientStore.patients"
           :key="patient.id"
-          class="col-3 full-height"
+          class="col-12 full-height"
         >
           <PatientItem v-bind="patient" @click="selectPatient(patient.id)" />
         </div>
