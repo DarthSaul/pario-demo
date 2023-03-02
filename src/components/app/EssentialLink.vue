@@ -3,7 +3,7 @@
     clickable
     :to="path"
     class="q-mx-md q-px-md q-mb-sm border-radius10"
-    exact-active-class="active-link"
+    active-class="active-link"
   >
     <q-item-section v-if="icon" avatar>
       <q-icon :name="icon" />
