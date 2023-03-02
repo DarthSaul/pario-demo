@@ -11,7 +11,7 @@ function toggleLeftDrawer() {
 
 <template>
   <q-layout view="Lhh lpR lFf">
-    <MainHeader />
+    <MainHeader @toggle-drawer="toggleLeftDrawer" />
 
     <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
       <MainDrawer />

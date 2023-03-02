@@ -33,7 +33,7 @@ function handleClick(msg) {
 
 <template>
   <div class="q-pa-lg bg-white shadow-5 border-radius10 cursor-pointer">
-    <div class="row items-center q-gutter-x-lg">
+    <div class="row items-center q-gutter-x-lg q-gutter-y-md">
       <div class="col-auto">
         <q-avatar
           size="70px"
@@ -47,16 +47,18 @@ function handleClick(msg) {
         <div class="text-caption text-grey-7">Name</div>
         <div class="text-h5 text-bold">{{ lastName }}, {{ firstName }}</div>
       </div>
-      <div class="col-2">
+      <div class="col-xs-12 col-sm-2">
         <div class="text-caption text-grey-7">Patient ID</div>
         <div class="text-h5 text-bold">{{ props.id }}</div>
       </div>
-      <div class="col">
+      <div class="col-xs-12 col-sm">
         <div class="text-caption text-grey-7">DOB</div>
         <div class="text-h5 text-bold">{{ props.birthDate }}</div>
       </div>
+
       <q-separator vertical inset />
-      <div class="col-auto">
+
+      <div class="col-xs-12 col-sm-auto">
         <div class="q-mb-xs">
           <q-btn
             icon="monitor_heart"

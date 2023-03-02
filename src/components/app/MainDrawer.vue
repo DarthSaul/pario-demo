@@ -17,6 +17,18 @@ const essentialLinks = [
     path: "/settings",
   },
 ];
+const subLinks = [
+  {
+    title: "Profile",
+    icon: "account_circle",
+    path: "/profile",
+  },
+  {
+    title: "Support",
+    icon: "support",
+    path: "/support",
+  },
+];
 </script>
 
 <template>
@@ -40,6 +52,7 @@ const essentialLinks = [
     />
     <q-separator inset class="q-my-lg" />
     <q-item-label header> Help </q-item-label>
+    <EssentialLink v-for="link in subLinks" :key="link.title" v-bind="link" />
   </q-list>
 </template>
 

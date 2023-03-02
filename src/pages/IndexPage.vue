@@ -18,7 +18,7 @@ function selectPatient(id) {
 </script>
 
 <template>
-  <q-page padding>
+  <q-page class="q-pa-lg">
     <div v-if="patientStore.loading">
       <div class="row items-stretch q-col-gutter-lg">
         <div v-for="n in 3" :key="n" class="col-12">

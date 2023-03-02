@@ -1,10 +1,15 @@
-<script setup></script>
+<script setup>
+const emit = defineEmits(["toggle-drawer"]);
+function handleClick() {
+  emit("toggle-drawer");
+}
+</script>
 
 <template>
   <q-header class="bg-transparent q-px-sm q-py-md" style="height: 90px">
     <q-item>
       <q-item-section avatar>
-        <q-avatar size="55px">
+        <q-avatar size="55px" @click="handleClick" class="cursor-pointer">
           <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
         </q-avatar>
       </q-item-section>

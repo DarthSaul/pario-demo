@@ -8,6 +8,8 @@ const routes = [
       { path: "home/:id", component: () => import("pages/PatientPage.vue") },
       { path: "history", component: () => import("pages/HistoryPage.vue") },
       { path: "settings", component: () => import("pages/SettingsPage.vue") },
+      { path: "profile", component: () => import("pages/ProfilePage.vue") },
+      { path: "support", component: () => import("pages/SupportPage.vue") },
     ],
   },
 
